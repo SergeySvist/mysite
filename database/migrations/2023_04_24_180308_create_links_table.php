@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('link', 256);
             $table->string('title', 32);
-            $table->unsignedBigInteger('picture_id');
         });
     }
 

@@ -5,6 +5,7 @@ namespace App\Services\FileServices;
 use App\Exceptions\ApiBadRequestException;
 use App\Exceptions\ApiNotFoundException;
 use App\Models\File;
+use App\Models\MimeType;
 use App\Services\FileServices\Handlers\AbstractFileHandler;
 use App\Services\FileServices\Handlers\ImageHandler;
 use App\Services\FileServices\Handlers\PdfHandler;
@@ -33,10 +34,10 @@ class FileService
     }
 
     public function save(UploadedFile $uploadedFile){
-        $mimetype = DB::table('mime_types')->where('title', $uploadedFile->getClientMimeType())->first();
+        $mimetype = MimeType::where('title', '=', $uploadedFile->getClientMimeType())->first();
 
         if (!isset($mimetype))
-            throw new ApiNotFoundException('File mime type is undefined' . $uploadedFile->getMimeType());
+            throw new ApiNotFoundException('File mime type is undefined ' . $uploadedFile->getClientMimeType());
 
         $path = $this->getFileHandler($uploadedFile->getClientMimeType())->store($uploadedFile);
 

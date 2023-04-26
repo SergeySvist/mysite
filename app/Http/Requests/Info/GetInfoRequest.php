@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Info;
 
+use App\Http\Requests\ApiRequest;
 use App\Models\Language;
-use Illuminate\Foundation\Http\FormRequest;
 
 class GetInfoRequest extends ApiRequest
 {

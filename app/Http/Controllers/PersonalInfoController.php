@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GetInfoRequest;
+use App\Http\Requests\Info\CreateInfoRequest;
+use App\Http\Requests\Info\GetInfoRequest;
 use App\Models\Language;
 use App\Models\PersonalInfo;
+use App\Services\FileServices\FileService;
 use App\Traits\ApiResponser;
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class PersonalInfoController extends Controller
 {
@@ -18,5 +20,19 @@ class PersonalInfoController extends Controller
             ->get('personal_infos.*');
 
         return $this->successResponse([$personalInfo]);
+    }
+
+    public function create(CreateInfoRequest $request, FileService $fileService){
+        $info = new PersonalInfo($request->validated());
+
+        $cv = $fileService->save($request['cv']);
+        $info->cv_id = $cv->id;
+        $avatar = $fileService->save($request['avatar']);
+        $info->avatar_id = $avatar->id;
+
+        $info->language_id = Language::where('slug', '=', $request['language'])->first()->id;
+
+        $info->save();
+        return $this->successResponse($info->toArray(), null, Response::HTTP_CREATED);
     }
 }

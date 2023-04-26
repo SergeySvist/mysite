@@ -56,10 +56,11 @@ class PersonalInfo extends Model
         'created_at', 'updated_at',
         'avatar_id', 'cv_id', 'language_id',
         'languageInfo', 'language',
+        'cv', 'avatar', 'cvUrl', 'avatarUrl'
     ];
 
     protected $appends = [
-        'language_info'
+        'language_info', 'cv_url', 'avatar_url',
     ];
 
     public function links(): BelongsToMany{
@@ -74,9 +75,30 @@ class PersonalInfo extends Model
         return $this->hasOne(Language::class, 'id', 'language_id');
     }
 
+    public function avatar(): hasOne{
+        return $this->hasOne(File::class, 'id', 'avatar_id');
+    }
+
+    public function cv(): hasOne{
+        return $this->hasOne(File::class, 'id', 'cv_id');
+    }
+
     public function languageInfo(): Attribute{
         return Attribute::make(
             get: fn() => $this->language
         );
     }
+
+    public function avatarUrl(): Attribute{
+        return Attribute::make(
+            get: fn() => $this->avatar->url
+        );
+    }
+
+    public function cvUrl(): Attribute{
+        return Attribute::make(
+            get: fn() => $this->cv->url
+        );
+    }
+
 }

@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * App\Models\File
@@ -35,16 +38,40 @@ class File extends Model
 {
     use HasFactory;
 
+    const DEFAULT_URL = '';
+
     protected $fillable = [
         'original_name', 'original_extension',
-        'path',
+        'path', 'mimetype_id',
     ];
 
     protected $hidden = [
-        'created_at', 'updated_at', 'mimetype_id',
+        'created_at', 'updated_at',
     ];
 
     protected function mimeTypes(): BelongsTo{
         return $this->belongsTo(MimeType::class);
     }
+
+    protected function mimeType(): hasOne{
+        return $this->hasOne(MimeType::class, 'id', 'mimetype_id');
+    }
+
+    public function url(): Attribute{
+        return Attribute::make(
+            get: function (){
+                if(Storage::exists($this->path))
+                    return asset('storage/' . $this->path);
+
+                return self::DEFAULT_URL;
+            }
+        );
+    }
+
+    public function mimeTypeTitle(): Attribute{
+        return Attribute::make(
+            get: fn() => $this->mimeType->title
+        );
+    }
+
 }

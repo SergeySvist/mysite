@@ -6,6 +6,7 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Language
@@ -31,4 +32,7 @@ class Language extends Model
         'title', 'slug',
     ];
 
+    protected function personalInfos(): HasMany{
+        return $this->hasMany(PersonalInfo::class);
+    }
 }

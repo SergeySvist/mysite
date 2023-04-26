@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('description', 1024);
             $table->unsignedBigInteger('avatar_id');
             $table->unsignedBigInteger('cv_id');
-            $table->unsignedBigInteger('language_id');
+            $table->unsignedBigInteger('language_id')->unique();
 
             $table->timestamps();
 

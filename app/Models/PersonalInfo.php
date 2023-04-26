@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 
 /**
@@ -42,7 +45,9 @@ class PersonalInfo extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
+        'id',
         'name', 'surname',
         'description',
     ];
@@ -50,9 +55,28 @@ class PersonalInfo extends Model
     protected $hidden = [
         'created_at', 'updated_at',
         'avatar_id', 'cv_id', 'language_id',
+        'languageInfo', 'language',
+    ];
+
+    protected $appends = [
+        'language_info'
     ];
 
     public function links(): BelongsToMany{
         return $this->belongsToMany(Link::class, 'links_personal_infos');
+    }
+
+    public function languages(): BelongsTo{
+        return $this->belongsTo(Language::class);
+    }
+
+    public function language(): hasOne{
+        return $this->hasOne(Language::class, 'id', 'language_id');
+    }
+
+    public function languageInfo(): Attribute{
+        return Attribute::make(
+            get: fn() => $this->language
+        );
     }
 }

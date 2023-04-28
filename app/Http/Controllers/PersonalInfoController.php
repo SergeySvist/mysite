@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Info\CreateInfoRequest;
+use App\Http\Requests\Info\DeleteInfoRequest;
 use App\Http\Requests\Info\GetInfoRequest;
+use App\Http\Requests\Info\PatchInfoRequest;
 use App\Models\Language;
 use App\Models\PersonalInfo;
 use App\Services\FileServices\FileService;
@@ -14,10 +16,13 @@ class PersonalInfoController extends Controller
 {
     use ApiResponser;
 
+    private function getInfoByLang(string $lang){
+        return PersonalInfo::join('languages', 'languages.id', '=', 'personal_infos.language_id')
+            ->where('languages.slug', '=', $lang)
+            ->get('personal_infos.*')->first();
+    }
     public function index(GetInfoRequest $request){
-        $personalInfo = PersonalInfo::join('languages', 'languages.id', '=', 'personal_infos.language_id')
-            ->where('languages.slug', '=', $request->validated()['lang'])
-            ->get('personal_infos.*');
+        $personalInfo = $this->getInfoByLang($request->validated()['lang']);
 
         return $this->successResponse([$personalInfo]);
     }
@@ -35,4 +40,36 @@ class PersonalInfoController extends Controller
         $info->save();
         return $this->successResponse($info->toArray(), null, Response::HTTP_CREATED);
     }
+
+    public function patch(PatchInfoRequest $request, FileService $fileService){
+        $info = $this->getInfoByLang($request->validated()['lang']);
+        $info->fill($request->validated());
+
+        if (isset($request['avatar'])){
+            $fileService->delete($info->avatar);
+
+            $file = $fileService->save($request['avatar']);
+            $info->avatar_id = $request['avatar'];
+        }
+
+        if (isset($request['cv'])){
+            $fileService->delete($info->cv);
+
+            $file = $fileService->save($request['cv']);
+            $info->cv_id = $request['cv'];
+        }
+
+        $info->save();
+        return $this->successResponse([], null, Response::HTTP_ACCEPTED);
+    }
+
+    public function delete(DeleteInfoRequest $request, FileService $fileService){
+        $info = $this->getInfoByLang($request->validated()['lang']);
+        $fileService->delete($info->cv);
+        $fileService->delete($info->avatar);
+
+        $info->delete();
+        return $this->successResponse([], null, Response::HTTP_ACCEPTED);
+    }
+
 }

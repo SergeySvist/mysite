@@ -18,5 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'info'], function (){
     Route::get('/', [PersonalInfoController::class, 'index']);
     Route::post('/', [PersonalInfoController::class, 'create']);
-
+    Route::patch('/', [PersonalInfoController::class, 'patch']);
+    Route::delete('/', [PersonalInfoController::class, 'delete']);
 });

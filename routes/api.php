@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\PersonalInfoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,4 +21,10 @@ Route::group(['prefix' => 'info'], function (){
     Route::post('/', [PersonalInfoController::class, 'create']);
     Route::patch('/', [PersonalInfoController::class, 'patch']);
     Route::delete('/', [PersonalInfoController::class, 'delete']);
+});
+
+Route::group(['prefix' => 'links'], function (){
+    Route::get('/', [LinkController::class, 'index']);
+    Route::post('/', [LinkController::class, 'create']);
+    Route::delete('/{link}', [LinkController::class, 'delete']);
 });

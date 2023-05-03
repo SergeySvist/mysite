@@ -38,7 +38,7 @@ class PersonalInfoController extends Controller
         $info->language_id = Language::where('slug', '=', $request['language'])->first()->id;
 
         $info->save();
-        return $this->successResponse($info->toArray(), null, Response::HTTP_CREATED);
+        return $this->successResponse([$info->toArray()], null, Response::HTTP_CREATED);
     }
 
     public function patch(PatchInfoRequest $request, FileService $fileService){
@@ -60,7 +60,7 @@ class PersonalInfoController extends Controller
         }
 
         $info->save();
-        return $this->successResponse([], null, Response::HTTP_ACCEPTED);
+        return $this->successResponse([$info->id], null, Response::HTTP_ACCEPTED);
     }
 
     public function delete(DeleteInfoRequest $request, FileService $fileService){
@@ -69,7 +69,7 @@ class PersonalInfoController extends Controller
         $fileService->delete($info->avatar);
 
         $info->delete();
-        return $this->successResponse([], null, Response::HTTP_ACCEPTED);
+        return $this->successResponse([$info->id], null, Response::HTTP_ACCEPTED);
     }
 
 }

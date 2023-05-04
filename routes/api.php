@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\PersonalInfoController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,11 @@ Route::group(['prefix' => 'links'], function (){
     Route::get('/', [LinkController::class, 'index']);
     Route::post('/', [LinkController::class, 'create']);
     Route::delete('/{link}', [LinkController::class, 'delete']);
+});
+
+Route::group(['prefix' => 'projects'], function (){
+    Route::get('/', [ProjectController::class, 'index']);
+    Route::post('/', [ProjectController::class, 'create']);
+    Route::patch('/{project}', [ProjectController::class, 'update']);
+    Route::delete('/{project}', [ProjectController::class, 'delete']);
 });

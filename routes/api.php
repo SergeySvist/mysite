@@ -33,6 +33,7 @@ Route::group(['prefix' => 'links'], function (){
 Route::group(['prefix' => 'projects'], function (){
     Route::get('/', [ProjectController::class, 'index']);
     Route::post('/', [ProjectController::class, 'create']);
+    Route::post('/{project}', [ProjectController::class, 'addTag']);
     Route::patch('/{project}', [ProjectController::class, 'update']);
     Route::delete('/{project}', [ProjectController::class, 'delete']);
 });

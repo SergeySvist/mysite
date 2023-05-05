@@ -13,20 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tags_projects', function (Blueprint $table) {
-            $table->unsignedBigInteger('tag_id');
-
+        Schema::create('project_files', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('file_id');
+            $table->unsignedBigInteger('filetype_id');
 
-            $table->primary(['tag_id', 'project_id']);
-
-            $table->foreign('tag_id')
-                ->references('id')
-                ->on('tags');
+            $table->timestamps();
 
             $table->foreign('project_id')
-                ->references('id')
-                ->on('projects');
+                ->references('id')->on('projects')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('filetype_id')->references('id')->on('file_types');
         });
     }
 
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags_project');
+        Schema::dropIfExists('project_files');
     }
 };

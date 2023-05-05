@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -35,14 +37,35 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description',
+        'title', 'description', 'link'
     ];
 
     protected $hidden = [
         'created_at', 'updated_at',
+        'projectFiles', 'tags'
+    ];
+
+    protected $appends = [
+        'project_files_data', 'tags_titles',
     ];
 
     public function tags(): BelongsToMany{
         return $this->belongsToMany(Tag::class, 'tags_projects');
+    }
+
+    public function projectFiles(): HasMany{
+        return $this->hasMany(ProjectFile::class);
+    }
+
+    public function projectFilesData(): Attribute{
+        return Attribute::make(
+            get: fn() => $this->projectFiles
+        );
+    }
+
+    public function tagsTitles(): Attribute{
+        return Attribute::make(
+            get: fn() => $this->tags
+        );
     }
 }

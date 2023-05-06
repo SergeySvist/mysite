@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\ProjectController;
@@ -36,4 +37,12 @@ Route::group(['prefix' => 'projects'], function (){
     Route::post('/{project}', [ProjectController::class, 'addTag']);
     Route::patch('/{project}', [ProjectController::class, 'update']);
     Route::delete('/{project}', [ProjectController::class, 'delete']);
+});
+
+Route::group(['prefix' => 'blogs'], function (){
+    Route::get('/', [BlogController::class, 'index']);
+    Route::post('/', [BlogController::class, 'create']);
+    Route::post('/{blog}', [BlogController::class, 'addTag']);
+    Route::patch('/{blog}', [BlogController::class, 'update']);
+    Route::delete('/{blog}', [BlogController::class, 'delete']);
 });

@@ -47,7 +47,7 @@ class ProjectController extends Controller
 
     private function findFileBySlug(Project $project ,string $slug){
         for ($i=0;$i<count($project->projectFilesData->toArray());$i++){
-            if($project->projectFilesData[$i]->fileType->slug == "avatar")
+            if($project->projectFilesData[$i]->fileType->slug == $slug)
                 return $project->projectFilesData[$i]->file;
         }
         throw new ApiNotFoundException("File not found");

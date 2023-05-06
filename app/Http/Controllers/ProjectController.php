@@ -6,6 +6,7 @@ use App\Exceptions\ApiNotFoundException;
 use App\Http\Requests\Project\AddTagRequest;
 use App\Http\Requests\Project\CreateProjectRequest;
 use App\Http\Requests\Project\UpdateProjectRequest;
+use App\Models\Language;
 use App\Models\Project;
 use App\Models\ProjectFile;
 use App\Models\Tag;
@@ -58,13 +59,14 @@ class ProjectController extends Controller
     }
 
     public function create(CreateProjectRequest $request, FileService $fileService){
-        $project = Project::create($request->validated());
+        $project = new Project($request->validated());
         $avatar = $fileService->save($request['avatar']);
 
+        $project->language_id = Language::where('slug', '=', $request['lang'])->first()->id;
+        $project->save();
         $this->createNewProjectFile($project->id, $avatar->id, 'avatar');
 
         return $this->successResponse($project->toArray(), null, Response::HTTP_CREATED);
-
     }
 
     public function addTag(Project $project, AddTagRequest $request){

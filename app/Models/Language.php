@@ -35,4 +35,12 @@ class Language extends Model
     protected function personalInfos(): HasMany{
         return $this->hasMany(PersonalInfo::class);
     }
+
+    protected function projects(): HasMany{
+        return $this->hasMany(Project::class);
+    }
+
+    protected function blogs(): HasMany{
+        return $this->hasMany(Blog::class);
+    }
 }

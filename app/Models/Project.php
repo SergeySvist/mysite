@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 
 /**
@@ -42,15 +44,24 @@ class Project extends Model
 
     protected $hidden = [
         'created_at', 'updated_at',
-        'projectFiles', 'tags'
+        'projectFiles', 'tags', 'language_id',
+        'languageInfo', 'language',
     ];
 
     protected $appends = [
-        'project_files_data', 'tags_titles',
+        'project_files_data', 'tags_titles', 'language_info',
     ];
 
     public function tags(): BelongsToMany{
         return $this->belongsToMany(Tag::class, 'tags_projects');
+    }
+
+    public function languages(): BelongsTo{
+        return $this->belongsTo(Language::class);
+    }
+
+    public function language(): hasOne{
+        return $this->hasOne(Language::class, 'id', 'language_id');
     }
 
     public function projectFiles(): HasMany{
@@ -68,4 +79,11 @@ class Project extends Model
             get: fn() => $this->tags
         );
     }
+
+    public function languageInfo(): Attribute{
+        return Attribute::make(
+            get: fn() => $this->language
+        );
+    }
+
 }

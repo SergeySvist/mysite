@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\Project;
 
+use App\Http\Requests\ApiRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddTagRequest extends FormRequest
+class AddTagRequest extends ApiRequest
 {
 
 

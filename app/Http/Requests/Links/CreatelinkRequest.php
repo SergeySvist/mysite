@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\Links;
 
+use App\Http\Requests\ApiRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatelinkRequest extends FormRequest
+class CreatelinkRequest extends ApiRequest
 {
 
     /**

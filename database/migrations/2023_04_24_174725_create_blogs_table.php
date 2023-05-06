@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('title', 128);
             $table->text('main_text');
+            $table->unsignedBigInteger('language_id');
+
+            $table->foreign('language_id')->on('languages')->references('id');
+
             $table->timestamps();
         });
     }

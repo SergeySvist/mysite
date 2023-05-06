@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ApiNotFoundException;
-use App\Http\Requests\Project\AddTagRequest;
+use App\Http\Requests\AddTagRequest;
 use App\Http\Requests\Project\CreateProjectRequest;
 use App\Http\Requests\Project\UpdateProjectRequest;
 use App\Models\Language;
@@ -12,7 +12,6 @@ use App\Models\ProjectFile;
 use App\Models\Tag;
 use App\Services\FileServices\FileService;
 use App\Traits\ApiResponser;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 

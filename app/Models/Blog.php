@@ -53,7 +53,7 @@ class Blog extends Model
     ];
 
     public function tags(): BelongsToMany{
-        return $this->belongsToMany(Tag::class, 'tags_projects');
+        return $this->belongsToMany(Tag::class, 'tags_blogs');
     }
 
     public function languages(): BelongsTo{

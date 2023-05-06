@@ -1,9 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Project;
-
-use App\Http\Requests\ApiRequest;
-use Illuminate\Foundation\Http\FormRequest;
+namespace App\Http\Requests;
 
 class AddTagRequest extends ApiRequest
 {

@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ApiNotFoundException;
+use App\Http\Requests\AddTagRequest;
+use App\Http\Requests\Blog\CreateBlogRequest;
+use App\Http\Requests\Blog\UpdateBlogRequest;
 use App\Http\Requests\Project\UpdateProjectRequest;
 use App\Models\Blog;
 use App\Models\BlogFile;
+use App\Models\Language;
 use App\Models\Project;
-use App\Models\ProjectFile;
+use App\Models\Tag;
 use App\Services\FileServices\FileService;
 use App\Traits\ApiResponser;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Response;
 
 class BlogController extends Controller
 {
@@ -50,6 +54,42 @@ class BlogController extends Controller
     }
 
     public function index(){
-        dd('index');
+        return $this->successResponse([Blog::all()->toArray()]);
     }
+
+    public function create(CreateBlogRequest $request, FileService $fileService){
+        $blog = new Blog($request->validated());
+        $avatar = $fileService->save($request['avatar']);
+
+        $blog->language_id = Language::where('slug', '=', $request['lang'])->first()->id;
+        $blog->save();
+        $this->createNewBlogFile($blog->id, $avatar->id, 'avatar');
+
+        return $this->successResponse($blog->toArray(), null, Response::HTTP_CREATED);
+    }
+
+    public function addTag(Blog $blog, AddTagRequest $request){
+        $tag = Tag::where('title', '=', $request['tag'])->first();
+        $blog->tags()->attach($tag->id);
+        return $this->successResponse([], null, Response::HTTP_ACCEPTED);
+    }
+
+    public function update(Blog $blog, UpdateBlogRequest $request, FileService $fileService){
+        $blog->update($request->validated());
+        $this->updateBlogFile($blog, 'avatar', $request, $fileService);
+
+        return $this->successResponse([$blog->id], null, Response::HTTP_ACCEPTED);
+    }
+
+    public function delete(Blog $blog, FileService $fileService){
+        for ($i=0;$i<count($blog->blogFilesData->toArray());$i++)
+            $fileService->delete($blog->blogFilesData[$i]->file);
+
+
+        $blog->delete();
+
+        return $this->successResponse([$blog->id], null, Response::HTTP_ACCEPTED);
+    }
+
+
 }

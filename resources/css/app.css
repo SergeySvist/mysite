@@ -1,0 +1,39 @@
+body {
+    background-color: #1a202c;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.menu{
+    float: right;
+}
+
+.menu ul{
+    margin: 0;
+    list-style-type: none;
+}
+
+.menu li{
+    margin-bottom: 20px;
+    display: flex;
+    height: 30px;
+    text-align: center;
+}
+
+.menu .menu-items{
+    text-decoration: none;
+    color: white;
+    height: 100%;
+    width: 100px;
+}
+
+.menu .menu-items:hover{
+    color: #cbd5e0;
+}
+
+.menu .menu-items.active{
+    border: #ffffff 2px solid;
+    border-radius: 10px;
+}
+

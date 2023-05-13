@@ -7,25 +7,136 @@
     height: 100vb;
 }
 
-.navbar {
+
+.main-menu{
+    width: 13rem;
+    background-color: #15181d;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: auto;
+    bottom: 0;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-btn{
+    display: none;
+}
+
+.menu-top{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-nav{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-nav ul{
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-nav ul li{
+    height: 40px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-nav ul a{
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+.menu-nav ul a:hover{
+    background-color: #1c2431;
+}
+
+.menu-nav ul a.active{
     background-color: #1a202c;
-    color: #ffffff;
 }
 
-.nav {
-    position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.socials {
+    margin-bottom: 5rem;
 }
 
-.nav-link {
-    margin-right: 10px;
+.socials a{
+    margin-right: 15px;
+    color: white;
 }
-.link {
-    margin-right: 10px;
+.content{
+    height: 100vh;
+    position: relative;
 }
 
-.header {
-    background-color: #262930;
-    color: #ffffff;
+.aboutMe{
+    display: flex;
+    position: relative;
 }
+
+@media screen and (max-width: 1300px){
+    .menu-btn {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        width: 4rem;
+        height: 4rem;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #15181d;
+        text-decoration: none;
+        color: white;
+        font-size: 3rem;
+    }
+    .main-menu{
+        align-items: center;
+        position: fixed;
+        z-index: -5;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.4s, z-index 0s 0.7s;
+    }
+    .mobileopen .main-menu {
+        transition: visibility 0s, z-index 0s 0s;
+        z-index: 99;
+        opacity: 1;
+    }
+    .mobileopen .open{
+        display: none;
+    }
+    .content{
+        left: 0;
+        width: 100vw;
+    }
+
+}
+    

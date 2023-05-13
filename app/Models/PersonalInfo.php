@@ -62,9 +62,6 @@ class PersonalInfo extends Model
         'language_info', 'cv_url', 'avatar_url',
     ];
 
-    public function links(): BelongsToMany{
-        return $this->belongsToMany(Link::class, 'links_personal_infos');
-    }
 
     public function languages(): BelongsTo{
         return $this->belongsTo(Language::class);

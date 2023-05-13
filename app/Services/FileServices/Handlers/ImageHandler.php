@@ -10,6 +10,8 @@ class ImageHandler extends AbstractFileHandler
 
     public const fileTypes = [
         "image/png",
+        "image/jpg",
+        "image/jpeg",
     ];
 
     public function store(UploadedFile $uploadedFile): string

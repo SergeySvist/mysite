@@ -37,8 +37,4 @@ class Link extends Model
         'title', 'link',
     ];
 
-    public function personalInfos(): BelongsToMany{
-        return $this->belongsToMany(PersonalInfo::class, 'links_personal_infos');
-    }
-
 }

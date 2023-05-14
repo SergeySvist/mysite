@@ -95,16 +95,17 @@
     margin-right: 15px;
     color: white;
 }
+
 .content{
     height: 100vh;
     width: 100vw;
     position: relative;
     display: flex;
-    align-items: center;
 }
 
 .aboutMe{
     display: flex;
+    align-items: center;
     position: relative;
     justify-content: space-between;
     padding: 6rem 17rem 6rem 3rem;
@@ -116,6 +117,55 @@
 .aboutMe img{
     border-radius: 50%;
     margin-right: 6rem;
+}
+
+.projectList {
+    width: 100%;
+    position: relative;
+    padding: 3rem 17rem 3rem 3rem;
+}
+
+.projectList .header{
+    width: 100%;
+}
+.search-container{
+    display: flex;
+}
+.search-container input{
+    width: 100%;
+    background-color: #15181d;
+    border: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    color: #ffffff;
+    padding-left: 10px;
+}
+.search-container button{
+    background-color: #15181d;
+    border: none;
+    border-radius: 0%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.projectList .list{
+    margin-top: 3rem;
+
+}
+.list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.list .list-item{
+    background-color: #15181d;
+    border-radius: 15px;
+    padding: 1rem;
+    align-items: center;
+    text-align: center; 
+}
+
+.list .list-item p{
+    margin: 0;
 }
 @media screen and (max-width: 1300px){
     .main{
@@ -174,6 +224,16 @@
         position: static;
         width: 100%;
         height: auto;
+        max-width: 500px;
+        max-height: 500px;
+    }
+    .projectList {
+        padding: 6rem 3rem;
+    }
+    .list{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
     

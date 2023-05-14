@@ -14,19 +14,8 @@ const AboutMe = () => {
         getInfo();
     }, []);
 
-    const getCV = async () =>{
-        const resp = await client.get('/api/info/download', {
-            params: {lang: "en", file: "cv"},
-            responseType: 'blob',
-        });
-        const url = window.URL.createObjectURL(new Blob([resp.data])); // создаем ссылку для скачивания
-        const link = document.createElement('a');
-        link.href = url;
-        link.click();
-    }
-
     return (
-        <div className='aboutMe '>
+        <div className='aboutMe'>
             <div className="text">
                 <h1>About Me</h1>
                 <p>My name is {info.name} {info.surname}.</p>

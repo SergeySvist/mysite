@@ -24,6 +24,8 @@ Route::group(['prefix' => 'info'], function (){
     Route::post('/', [PersonalInfoController::class, 'create']);
     Route::patch('/', [PersonalInfoController::class, 'patch']);
     Route::delete('/', [PersonalInfoController::class, 'delete']);
+    Route::get('/download', [PersonalInfoController::class, 'download']);
+
 });
 
 Route::group(['prefix' => 'links'], function (){

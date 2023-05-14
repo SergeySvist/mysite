@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ApiNotFoundException;
 use App\Http\Requests\Info\CreateInfoRequest;
 use App\Http\Requests\Info\DeleteInfoRequest;
+use App\Http\Requests\Info\DownloadInfoFileRequest;
 use App\Http\Requests\Info\GetInfoRequest;
 use App\Http\Requests\Info\PatchInfoRequest;
 use App\Models\Language;
 use App\Models\PersonalInfo;
+use App\Models\Project;
 use App\Services\FileServices\FileService;
 use App\Traits\ApiResponser;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,6 +28,19 @@ class PersonalInfoController extends Controller
         $personalInfo = $this->getInfoByLang($request->validated()['lang']);
 
         return $this->successResponse([$personalInfo]);
+    }
+    public function download(DownloadInfoFileRequest $request, FileService $fileService){
+        $info = $this->getInfoByLang($request->validated()['lang']);
+
+        switch ($request->validated('file')){
+            case 'cv':
+                return $fileService->getStream($info->cv);
+                break;
+            default:
+                break;
+        }
+
+        throw new ApiNotFoundException('File not found');
     }
 
     public function create(CreateInfoRequest $request, FileService $fileService){

@@ -28,7 +28,7 @@ const Header = () => {
                 <img src={fileUrl} alt="" width='200px'/>
             </div>
             <div className="menu-nav">
-                <ul>
+                <ul onClick={()=>document.querySelector("body").classList.toggle("mobileopen")}>
                     <li><NavLink to="/">About</NavLink></li>
                     <li><NavLink to="/projects">Projects</NavLink></li>
                     <li><NavLink to="/blogs">Blog</NavLink></li>

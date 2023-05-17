@@ -21,6 +21,10 @@ Route::get('/blogs', function () {
     return view('welcome');
 });
 
+Route::get('/blogs/{blog}', function () {
+    return view('welcome');
+});
+
 Route::get('/projects', function () {
     return view('welcome');
 });

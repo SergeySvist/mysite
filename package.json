@@ -19,6 +19,9 @@
         "@popperjs/core": "^2.11.7",
         "bootstrap": "^5.3.0-alpha3",
         "bootstrap-icons": "^1.10.5",
-        "react-router-dom": "^6.11.1"
+        "emojione": "^4.5.0",
+        "react-markdown": "^8.0.7",
+        "react-router-dom": "^6.11.1",
+        "rehype-raw": "^6.1.1"
     }
 }

@@ -147,14 +147,14 @@
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 }
-.projectList .list{
+.list{
     margin-top: 3rem;
 
 }
 .list{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
 }
 .list .list-item{
     background-color: #15181d;
@@ -163,8 +163,15 @@
     align-items: center;
     text-align: center; 
     position: relative;
+    
 }
-
+.list .list-item a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.list .list-item img{
+    object-fit: cover;
+}
 .list .list-item p{
     margin: 0;
 }
@@ -194,7 +201,7 @@
     border: none;
     width: 50%;
     height: 50%;
-    border-radius: 50%;
+    border-radius: 15px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -214,6 +221,27 @@
 .modal-body{
     text-align: left;
 }
+
+.blogList {
+    width: 100%;
+    position: relative;
+    padding: 3rem 17rem 3rem 3rem;
+}
+
+.blogList .header{
+    width: 100%;
+}
+
+.blogPage {
+    width: 100%;
+    position: relative;
+    padding: 3rem 17rem 3rem 3rem;
+}
+
+.blogPage img{
+    object-fit: cover;
+}
+
 @media screen and (max-width: 1300px){
     .main{
         padding-left: 0;
@@ -277,10 +305,12 @@
     .projectList {
         padding: 6rem 3rem;
     }
+}
+
+@media screen and (max-width: 700px){
     .list{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 10px;
     }
 }
-

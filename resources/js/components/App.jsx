@@ -8,6 +8,9 @@ import  'bootstrap/js/index.esm';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import AboutMe from './AboutMe/AboutMe';
 import ProjectList from './Projects/ProjectList';
+import BlogList from './Blog/BlogList';
+import BlogPage from './Blog/BlogPage';
+import { BlogContext } from '../contexts/BlogContext';
 const App = () => {
     return (
         <div className="main">
@@ -16,11 +19,16 @@ const App = () => {
             <Header/>
 
             <div className="content">
-                <Routes>
-                    <Route path='/' element={<AboutMe></AboutMe>}></Route>
-                    <Route path='/projects' element={<ProjectList />}></Route>
-                    <Route path='/blogs' element={<h1 className='ve-100'>Project</h1>}></Route>
-                </Routes>
+                <BlogContext>
+                    <Routes>
+                        <Route path='/' element={<AboutMe></AboutMe>}></Route>
+                        <Route path='/projects' element={<ProjectList />}></Route>
+                        <Route path='/blogs' >
+                            <Route index element={<BlogList></BlogList>}></Route>
+                            <Route path=':id' element={<BlogPage></BlogPage>}></Route>
+                        </Route>
+                    </Routes>
+                </BlogContext>
             </div>
         </div>
     );

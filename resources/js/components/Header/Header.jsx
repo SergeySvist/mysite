@@ -30,6 +30,7 @@ const Header = () => {
             <div className="menu-nav">
                 <ul onClick={()=>document.querySelector("body").classList.toggle("mobileopen")}>
                     <li><NavLink to="/">About</NavLink></li>
+                    <li><NavLink to="/skills">Skills</NavLink></li>
                     <li><NavLink to="/projects">Projects</NavLink></li>
                     <li><NavLink to="/blogs">Blog</NavLink></li>
                 </ul>

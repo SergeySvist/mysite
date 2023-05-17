@@ -5,7 +5,7 @@ const client = axios.create({baseURL});
 
 const AboutMe = () => {
     let [info, setInfo] = useState({});
-    let [cvUrl, setCvUrl] = useState();
+
     useEffect(()=>{
         const getInfo = async ()=>{
             const resp = await client.get('/api/info', {params: {lang: "en"}});

@@ -11,6 +11,7 @@ import ProjectList from './Projects/ProjectList';
 import BlogList from './Blog/BlogList';
 import BlogPage from './Blog/BlogPage';
 import { BlogContext } from '../contexts/BlogContext';
+import SkillsAndExperience from './Skills/SkillsAndExperience';
 const App = () => {
     return (
         <div className="main">
@@ -22,6 +23,7 @@ const App = () => {
                 <BlogContext>
                     <Routes>
                         <Route path='/' element={<AboutMe></AboutMe>}></Route>
+                        <Route path='/skills' element={<SkillsAndExperience></SkillsAndExperience>}></Route>
                         <Route path='/projects' element={<ProjectList />}></Route>
                         <Route path='/blogs' >
                             <Route index element={<BlogList></BlogList>}></Route>

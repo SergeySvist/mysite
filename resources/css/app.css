@@ -242,6 +242,24 @@
     object-fit: cover;
 }
 
+.skills-exp{
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    padding: 6rem 17rem 6rem 3rem;
+    width: 100vw;
+}
+
+.skills-exp .text{
+    width: 40%;
+}
+
+.aboutMe .skills{
+
+    margin-right: 6rem;
+}
+
 @media screen and (max-width: 1300px){
     .main{
         padding-left: 0;

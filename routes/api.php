@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\PersonalInfoController;
@@ -53,4 +54,11 @@ Route::group(['prefix' => 'blogs'], function (){
 Route::group(['prefix' => 'files'], function () {
     Route::get('/', [FileController::class, 'getFileByName']);
     Route::post('/', [FileController::class, 'create']);
+});
+
+Route::group(['prefix'=>'experiences'], function (){
+    Route::get('/', [ExperienceController::class, 'index']);
+    Route::post('/', [ExperienceController::class, 'create']);
+    Route::patch('/', [ExperienceController::class, 'patch']);
+    Route::delete('/', [ExperienceController::class, 'delete']);
 });

@@ -6,6 +6,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SkillsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,12 @@ Route::group(['prefix' => 'links'], function (){
     Route::get('/', [LinkController::class, 'index']);
     Route::post('/', [LinkController::class, 'create']);
     Route::delete('/{link}', [LinkController::class, 'delete']);
+});
+
+Route::group(['prefix' => 'skills'], function (){
+    Route::get('/', [SkillsController::class, 'index']);
+    Route::post('/', [SkillsController::class, 'create']);
+    Route::delete('/{skill}', [SkillsController::class, 'delete']);
 });
 
 Route::group(['prefix' => 'projects'], function (){

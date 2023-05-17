@@ -255,8 +255,7 @@
     width: 40%;
 }
 
-.aboutMe .skills{
-
+.skills-exp .skills{
     margin-right: 6rem;
 }
 
@@ -320,8 +319,27 @@
         max-width: 500px;
         max-height: 500px;
     }
+    .skills-exp{
+        display: block;
+        padding: 6rem 3rem;
+    }
+    .skills-exp .text{
+        width: 100%;
+    }
+    .skills-exp .skills{
+        margin-top: 3rem;
+        width: 100%;
+    }
+
     .projectList {
         padding: 6rem 3rem;
+    }
+    .blogList {
+        padding: 6rem 3rem;
+    }
+    .blogPage{
+        padding: 6rem 3rem;
+        width: 100%;
     }
 }
 

@@ -257,6 +257,33 @@
 
 .skills-exp .skills{
     margin-right: 6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.circle {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0.5rem;
+    border-radius: 50%;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.circle .inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 115px;
+    height: 115px;
+    background: #1a202c;
+    border-radius: 50%;
 }
 
 @media screen and (max-width: 1300px){
@@ -341,6 +368,13 @@
         padding: 6rem 3rem;
         width: 100%;
     }
+    .skills-exp .skills{
+        margin-right: 6rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
 }
 
 @media screen and (max-width: 700px){

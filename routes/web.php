@@ -13,22 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// CLIENT ROUTES
+Route::domain(env('APP_URL'))->group(function (){
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get('/skills', function () {
+        return view('welcome');
+    });
+
+    Route::get('/blogs', function () {
+        return view('welcome');
+    });
+
+    Route::get('/blogs/{blog}', function () {
+        return view('welcome');
+    });
+
+    Route::get('/projects', function () {
+        return view('welcome');
+    });
 });
 
-Route::get('/skills', function () {
-    return view('welcome');
-});
+// ADMIN ROUTES
 
-Route::get('/blogs', function () {
-    return view('welcome');
-});
-
-Route::get('/blogs/{blog}', function () {
-    return view('welcome');
-});
-
-Route::get('/projects', function () {
-    return view('welcome');
+Route::domain('admin.'.env('APP_URL'))->group(function (){
+    Route::get('/', function () {
+        return view('admin');
+    });
 });

@@ -43,4 +43,19 @@ Route::domain('admin.'.env('APP_URL'))->group(function (){
     Route::get('/', function () {
         return view('admin');
     });
+    Route::get('/dashboard', function () {
+        return view('admin');
+    });
+    Route::get('/about', function () {
+        return view('admin');
+    });
+    Route::get('/skills', function () {
+        return view('admin');
+    });
+    Route::get('/projects', function () {
+        return view('admin');
+    });
+    Route::get('/blogs', function () {
+        return view('admin');
+    });
 });

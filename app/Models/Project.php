@@ -32,6 +32,15 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Project whereId($value)
  * @method static Builder|Project whereTitle($value)
  * @method static Builder|Project whereUpdatedAt($value)
+ * @property string $link
+ * @property int $language_id
+ * @property-read \App\Models\Language|null $language
+ * @property-read \App\Models\Language|null $languages
+ * @property-read Collection<int, \App\Models\ProjectFile> $projectFiles
+ * @property-read int|null $project_files_count
+ * @property-read Collection<int, \App\Models\Tag> $tags
+ * @method static Builder|Project whereLanguageId($value)
+ * @method static Builder|Project whereLink($value)
  * @mixin Eloquent
  */
 class Project extends Model

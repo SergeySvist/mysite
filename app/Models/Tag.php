@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string $slug
  * @property-read Collection<int, Blog> $blogs
  * @property-read int|null $blogs_count
- * @property-read Collection<int, \App\Models\Project> $projects
+ * @property-read Collection<int, Project> $projects
  * @property-read int|null $projects_count
  * @method static Builder|Tag newModelQuery()
  * @method static Builder|Tag newQuery()
@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static Builder|Tag whereId($value)
  * @method static Builder|Tag whereSlug($value)
  * @method static Builder|Tag whereTitle($value)
+ * @property-read Collection<int, Blog> $blogs
+ * @property-read Collection<int, Project> $projects
  * @mixin Eloquent
  */
 class Tag extends Model

@@ -8,6 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * App\Models\BlogFile
+ *
+ * @property int $id
+ * @property int $blog_id
+ * @property int $file_id
+ * @property int $filetype_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\File|null $file
+ * @property-read \App\Models\FileType|null $fileType
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogFile newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogFile newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogFile query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogFile whereBlogId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogFile whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogFile whereFileId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogFile whereFiletypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogFile whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogFile whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class BlogFile extends Model
 {
     use HasFactory;

@@ -8,6 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * App\Models\ProjectFile
+ *
+ * @property int $id
+ * @property int $project_id
+ * @property int $file_id
+ * @property int $filetype_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\File|null $file
+ * @property-read \App\Models\FileType|null $fileType
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectFile newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectFile newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectFile query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectFile whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectFile whereFileId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectFile whereFiletypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectFile whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectFile whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectFile whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class ProjectFile extends Model
 {
     use HasFactory;

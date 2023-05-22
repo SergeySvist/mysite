@@ -39,6 +39,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|PersonalInfo whereName($value)
  * @method static Builder|PersonalInfo whereSurname($value)
  * @method static Builder|PersonalInfo whereUpdatedAt($value)
+ * @property-read \App\Models\File|null $avatar
+ * @property-read \App\Models\File|null $cv
+ * @property-read \App\Models\Language|null $language
+ * @property-read \App\Models\Language|null $languages
  * @mixin Eloquent
  */
 class PersonalInfo extends Model

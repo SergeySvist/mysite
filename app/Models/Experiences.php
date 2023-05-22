@@ -8,6 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * App\Models\Experiences
+ *
+ * @property int $id
+ * @property string $description
+ * @property int $language_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Language|null $language
+ * @property-read \App\Models\Language|null $languages
+ * @method static \Illuminate\Database\Eloquent\Builder|Experiences newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Experiences newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Experiences query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Experiences whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experiences whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experiences whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experiences whereLanguageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experiences whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Experiences extends Model
 {
     use HasFactory;

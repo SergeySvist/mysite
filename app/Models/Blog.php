@@ -32,6 +32,13 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Blog whereMainText($value)
  * @method static Builder|Blog whereTitle($value)
  * @method static Builder|Blog whereUpdatedAt($value)
+ * @property int $language_id
+ * @property-read Collection<int, \App\Models\BlogFile> $blogFiles
+ * @property-read int|null $blog_files_count
+ * @property-read \App\Models\Language|null $language
+ * @property-read \App\Models\Language|null $languages
+ * @property-read Collection<int, \App\Models\Tag> $tags
+ * @method static Builder|Blog whereLanguageId($value)
  * @mixin Eloquent
  */
 class Blog extends Model

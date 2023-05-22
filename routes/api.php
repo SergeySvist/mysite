@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\FileController;
@@ -20,6 +21,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('/signin', [AuthController::class, 'signin']);
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/signout', [AuthController::class, 'signout']);
+});
 
 Route::group(['prefix' => 'info'], function (){
     Route::get('/', [PersonalInfoController::class, 'index']);

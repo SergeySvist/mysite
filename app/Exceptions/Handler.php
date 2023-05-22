@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -46,6 +47,9 @@ class Handler extends ExceptionHandler
     {
         $this->renderable(function (NotFoundHttpException $e) {
             throw new ApiNotFoundException();
+        });
+        $this->renderable(function (RouteNotFoundException $e) {
+            throw new ApiNotFoundException($e->getMessage());
         });
     }
 }

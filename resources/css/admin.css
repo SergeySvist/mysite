@@ -7,14 +7,16 @@
     height: 100vb;
     font-size: 1.2rem;
     line-height: 1.5;
+    padding-left: 0;
     display: block;
     min-width: 320px;
-    padding-left: 13rem;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
-
+.main-padding {
+    padding-left: 13rem;
+}
 .main-menu{
     width: 13rem;
     background-color: #15181d;
@@ -94,9 +96,39 @@
     width: 100%;
 }
 
+.content{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+}
+
+.loginPage{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.login .btn {
+    margin-top: 10px;
+}
+
+.login label{
+    width: 100px;
+    text-align: left;
+    margin-top: 20px;
+}
 
 @media screen and (max-width: 1300px){
     .main{
+        padding-left: 0;
+    }
+    .main-padding {
         padding-left: 0;
     }
     .menu-btn {
@@ -133,5 +165,11 @@
     }
     .mobileopen .open{
         display: none;
+    }
+    .content{
+        left: 0;
+        width: 100vw;
+        display: block;
+
     }
 }

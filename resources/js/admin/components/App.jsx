@@ -7,20 +7,21 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Header from './Header/Header';
 import { AuthContext, AuthContextData } from '../contexts/AuthContext';
 import ProtectRoute from './ProtectRoute';
+import LoginPage from './Login/LoginPage';
 
 const App = () => {
     const {token, login, logout} = useContext(AuthContextData);
 
     return (
     
-        <div className="main">
+        <div className={`main ${ token && "main-padding"}`}>
             <a className="menu-btn open" onClick={()=>document.querySelector("body").classList.toggle("mobileopen")}><i class="bi bi-list"></i></a>
 
             {token && <Header />}
 
             <div className="content">
                 <Routes>
-                    <Route index path='/' element={<div><h1>Login</h1><button onClick={login}>Login</button></div>}></Route>
+                    <Route index path='/' element={<LoginPage></LoginPage>}></Route>
                     <Route path='/dashboard' element={<ProtectRoute><h1>Dashboard</h1></ProtectRoute>}></Route>
                     <Route path='/about' element={<ProtectRoute><h1>About Me</h1></ProtectRoute>}></Route>
                     <Route path='/skills' element={<ProtectRoute><h1>Skills</h1></ProtectRoute>}></Route>

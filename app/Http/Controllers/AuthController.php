@@ -27,7 +27,6 @@ class AuthController extends Controller
     public function signout(){
         Auth::user()->tokens()->delete();
         return $this->successResponse();
-
     }
 
 }

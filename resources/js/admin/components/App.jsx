@@ -8,6 +8,7 @@ import Header from './Header/Header';
 import { AuthContext, AuthContextData } from '../contexts/AuthContext';
 import ProtectRoute from './ProtectRoute';
 import LoginPage from './Login/LoginPage';
+import AboutMe from './AboutMe/AboutMe';
 
 const App = () => {
     const {token, login, logout} = useContext(AuthContextData);
@@ -23,7 +24,7 @@ const App = () => {
                 <Routes>
                     <Route index path='/' element={<LoginPage></LoginPage>}></Route>
                     <Route path='/dashboard' element={<ProtectRoute><h1>Dashboard</h1></ProtectRoute>}></Route>
-                    <Route path='/about' element={<ProtectRoute><h1>About Me</h1></ProtectRoute>}></Route>
+                    <Route path='/about' element={<ProtectRoute><AboutMe></AboutMe></ProtectRoute>}></Route>
                     <Route path='/skills' element={<ProtectRoute><h1>Skills</h1></ProtectRoute>}></Route>
                     <Route path='/projects' element={<ProtectRoute><h1>Projects</h1></ProtectRoute>} />
                     <Route path='/blogs' element={<ProtectRoute><h1>Blog</h1></ProtectRoute>} />

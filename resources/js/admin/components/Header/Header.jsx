@@ -34,7 +34,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="menu-footer">
-                <p>Hello, SergeySvist</p>
+                <p>Hello, dear Admin</p>
                 <button className='btn btn-dark' onClick={logout}>Log out</button>
             </div>
         </menu>

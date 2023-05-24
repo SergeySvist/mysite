@@ -57,26 +57,27 @@ class PersonalInfoController extends Controller
         return $this->successResponse([$info->toArray()], null, Response::HTTP_CREATED);
     }
 
+    ///DONT WORK
     public function patch(PatchInfoRequest $request, FileService $fileService){
-        $info = $this->getInfoByLang($request->validated()['lang']);
-        $info->fill($request->validated());
-
-        if (isset($request['avatar'])){
-            $fileService->delete($info->avatar);
-
-            $file = $fileService->save($request['avatar']);
-            $info->avatar_id = $request['avatar'];
-        }
-
-        if (isset($request['cv'])){
-            $fileService->delete($info->cv);
-
-            $file = $fileService->save($request['cv']);
-            $info->cv_id = $request['cv'];
-        }
-
-        $info->save();
-        return $this->successResponse([$info->id], null, Response::HTTP_ACCEPTED);
+//        $info = $this->getInfoByLang($request->validated()['lang']);
+//        $info->fill($request->validated());
+//
+//        if (isset($request['avatar'])){
+//            $fileService->delete($info->avatar);
+//
+//            $file = $fileService->save($request['avatar']);
+//            $info->avatar_id = $request['avatar'];
+//        }
+//
+//        if (isset($request['cv'])){
+//            $fileService->delete($info->cv);
+//
+//            $file = $fileService->save($request['cv']);
+//            $info->cv_id = $request['cv'];
+//        }
+//
+//        $info->save();
+        return $this->successResponse([$request->validated()], null, Response::HTTP_ACCEPTED);
     }
 
     public function delete(DeleteInfoRequest $request, FileService $fileService){

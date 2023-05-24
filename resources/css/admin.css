@@ -182,6 +182,64 @@
     border: none;
     width: 7rem;
 }
+
+.skills-exp{
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    padding: 6rem 17rem 6rem 3rem;
+    width: 100vw;
+}
+
+.skills-exp .text{
+    width: 40%;
+}
+
+.skills-exp .text textarea{
+    width: 100%;
+    height: 300px;
+    background-color: #15181d;
+    color: #ffffff;
+    border: none;
+}
+
+.skills-exp .skills{
+    margin-right: 6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.skills-exp .skills .btn{
+    border-radius: 50%;
+    color: #ffffff;
+}
+.circle {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0.5rem;
+    border-radius: 50%;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.circle .inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 115px;
+    height: 115px;
+    background: #1a202c;
+    border-radius: 50%;
+}
+
+
 @media screen and (max-width: 1300px){
     .main{
         padding-left: 0;
@@ -253,5 +311,23 @@
         max-width: 500px;
         max-height: 500px;
     }
+    .skills-exp{
+        display: block;
+        padding: 6rem 3rem;
+    }
+    .skills-exp .text{
+        width: 100%;
+    }
+    .skills-exp .skills{
+        margin-top: 3rem;
+        width: 100%;
+    }
+    .skills-exp .skills{
+        margin-right: 6rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
 
 }

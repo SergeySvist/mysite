@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Experiances\CreateExperienceRequest;
-use App\Http\Requests\Experiances\DeleteExperienceRequest;
-use App\Http\Requests\Experiances\GetExperienceRequest;
+use App\Http\Requests\Experiences\CreateExperienceRequest;
+use App\Http\Requests\Experiences\DeleteExperienceRequest;
+use App\Http\Requests\Experiences\GetExperienceRequest;
+use App\Http\Requests\Experiences\PatchExperienceRequest;
 use App\Http\Requests\Info\PatchInfoRequest;
 use App\Models\Experiences;
 use App\Models\Language;
@@ -35,7 +36,7 @@ class ExperienceController extends Controller
         return $this->successResponse([$exp->toArray()], null, Response::HTTP_CREATED);
     }
 
-    public function patch(PatchInfoRequest $request){
+    public function patch(PatchExperienceRequest $request){
         $exp = $this->getExpByLang($request->validated()['lang']);
         $exp->fill($request->validated());
         $exp->save();

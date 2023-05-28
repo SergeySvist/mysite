@@ -159,9 +159,12 @@
     display: flex;
     position: relative;
     margin-right: 6rem;
-
 }
 
+.aboutMe .img input{
+    height: 0px;
+    width: 0px;
+}
 .aboutMe .img .btn{
     position: absolute;
     width: 100%;
@@ -176,11 +179,11 @@
 }
 
 .aboutMe .submit{
-    height: 100%;
     background-color: #15181d;
     color: #ffffff;
     border: none;
-    width: 7rem;
+    width: 10rem;
+    height: 3rem;
 }
 
 .skills-exp{

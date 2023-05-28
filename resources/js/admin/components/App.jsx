@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import 'bootstrap/scss/bootstrap.scss';
 import  'bootstrap/js/index.esm';
@@ -17,7 +17,7 @@ const App = () => {
     return (
     
         <div className={`main ${ token && "main-padding"}`}>
-            <a className="menu-btn open" onClick={()=>document.querySelector("body").classList.toggle("mobileopen")}><i class="bi bi-list"></i></a>
+            <a className="menu-btn open" onClick={()=>document.querySelector("body").classList.toggle("mobileopen")}><i className="bi bi-list"></i></a>
 
             {token && <Header />}
 

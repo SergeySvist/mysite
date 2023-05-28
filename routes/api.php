@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/signin', [AuthController::class, 'signin']);
 
 Route::get('/info/', [PersonalInfoController::class, 'index']);
+Route::get('/info/download/', [PersonalInfoController::class, 'download']);
+
 Route::get('/links/', [LinkController::class, 'index']);
 Route::get('/skills/', [SkillsController::class, 'index']);
 Route::get('/projects/', [ProjectController::class, 'index']);
@@ -39,7 +41,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/', [PersonalInfoController::class, 'create']);
         Route::patch('/', [PersonalInfoController::class, 'patch']);
         Route::delete('/', [PersonalInfoController::class, 'delete']);
-        Route::get('/download', [PersonalInfoController::class, 'download']);
 
     });
 

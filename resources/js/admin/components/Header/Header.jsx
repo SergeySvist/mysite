@@ -19,7 +19,7 @@ const Header = () => {
 
     return (
         <menu className='main-menu'>
-            <a className="menu-btn close" onClick={()=>document.querySelector("body").classList.toggle("mobileopen")}><i class="bi bi-x-lg"></i></a>
+            <a className="menu-btn close" onClick={()=>document.querySelector("body").classList.toggle("mobileopen")}><i className="bi bi-x-lg"></i></a>
             <div className="menu-top">
                 <img src={fileUrl} alt="" width='200px'/>
             </div>

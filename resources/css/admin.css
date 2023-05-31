@@ -240,9 +240,18 @@
     height: 115px;
     background: #1a202c;
     border-radius: 50%;
+
 }
+.circle .inner .trash{
+    display: none;
+}
+.circle .inner:hover .trash{
+    display: block;
+}
+.circle .inner:hover p{
+    display: none;
 
-
+}
 @media screen and (max-width: 1300px){
     .main{
         padding-left: 0;

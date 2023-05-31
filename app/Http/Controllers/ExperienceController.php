@@ -41,7 +41,7 @@ class ExperienceController extends Controller
         $exp->fill($request->validated());
         $exp->save();
 
-        return $this->successResponse([$exp->id], null, Response::HTTP_ACCEPTED);
+        return $this->successResponse([$exp->toArray()], null, Response::HTTP_ACCEPTED);
     }
 
     public function delete(DeleteExperienceRequest $request){

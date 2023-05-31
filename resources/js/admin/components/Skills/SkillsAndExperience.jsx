@@ -30,6 +30,12 @@ const SkillsAndExperience = () => {
         console.log(resp);
     }
 
+    const deleteSkill = async (skill)=>{
+        const resp = await client.delete('/api/skills', null, { headers: {'Authorization':`Bearer ${token}`}} );
+        setSkills(resp.data.data[0]);
+        console.log(resp);
+    }
+
     return (
         <div className='skills-exp'>
             <div className="text">
@@ -43,7 +49,7 @@ const SkillsAndExperience = () => {
                 {skills.map(skill=><Skill skill={skill} key={skill.id} />)}
                 <div className='skill'>
                     <button class="circle btn" style={{backgroundImage: `conic-gradient(#304d86 100%, #8ca0c9 0)`}}>
-                        <div class="inner "><i class="bi bi-plus-circle fs-1"></i></div>
+                        <div class="inner "><i className="bi bi-plus-circle fs-1"></i></div>
                     </button>
                 </div>
             </div>

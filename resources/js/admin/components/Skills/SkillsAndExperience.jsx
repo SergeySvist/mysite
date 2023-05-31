@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { baseURL } from '../../config';
 import Skill from './Skill';
+import { AuthContextData } from '../../contexts/AuthContext';
 
 const client = axios.create({baseURL});
 
 const SkillsAndExperience = () => {
-    let [exp, setExp] = useState({});
+    const {token, login, logout} = useContext(AuthContextData);
+
+    let [exp, setExp] = useState('');
     let [skills, setSkills] = useState([]);
     useEffect(()=>{
         const getExp = async ()=>{
             const resp = await client.get('/api/experiences', {params: {lang: "en"}});
-            setExp(resp.data.data[0]);
+            setExp(resp.data.data[0].description);
         }
         const getSkills = async ()=>{
             const resp = await client.get('/api/skills');
@@ -21,13 +24,19 @@ const SkillsAndExperience = () => {
         getSkills();
     }, []);
 
+    const updateExp = async ()=>{
+        const resp = await client.post('/api/experiences', {description: exp}, {params: {lang: "en", _method: "PATCH"}, headers: {'Authorization':`Bearer ${token}`}} );
+        setExp(resp.data.data[0].description);
+        console.log(resp);
+    }
+
     return (
         <div className='skills-exp'>
             <div className="text">
                 <h1>Skills & Experience</h1>
-                <textarea  type="text" value={exp.description} />
+                <textarea  type="text" value={exp} onChange={(e)=>{setExp(e.target.value)}}/>
 
-                <button className='btn btn-primary'>Send</button>
+                <button className='btn btn-primary' onClick={updateExp}>Send</button>
 
             </div>
             <div className='skills'>

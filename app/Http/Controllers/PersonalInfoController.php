@@ -57,7 +57,6 @@ class PersonalInfoController extends Controller
         return $this->successResponse([$info->toArray()], null, Response::HTTP_CREATED);
     }
 
-    ///DONT WORK
     public function patch(PatchInfoRequest $request, FileService $fileService){
         $info = $this->getInfoByLang($request->validated()['lang']);
         $info->fill($request->validated());

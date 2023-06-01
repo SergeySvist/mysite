@@ -17,7 +17,7 @@ class SkillsController extends Controller
 
     public function create(CreateSkillRequest $request){
         $skill = Skill::create($request->validated());
-        return $this->successResponse([$skill->id], null, Response::HTTP_CREATED);
+        return $this->successResponse([$skill->toArray()], null, Response::HTTP_CREATED);
     }
 
     public function delete(Skill $skill){

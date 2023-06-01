@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { baseURL } from '../../config';
 import Skill from './Skill';
 import { AuthContextData } from '../../contexts/AuthContext';
+import AddSkill from './AddSkill';
 
 const client = axios.create({baseURL});
 
@@ -30,12 +31,17 @@ const SkillsAndExperience = () => {
         console.log(resp);
     }
 
-    const deleteSkill = async (skill)=>{
-        const resp = await client.delete('/api/skills', null, { headers: {'Authorization':`Bearer ${token}`}} );
-        setSkills(resp.data.data[0]);
+    const deleteSkill = async (id)=>{
+        const resp = await client.delete(`/api/skills/${id}`, {headers: {'Authorization':`Bearer ${token}`}});
+        setSkills(skills.filter(skill => skill.id !== resp.data.data[0]));
         console.log(resp);
     }
 
+    const addSkill = async (skill)=>{
+        const resp = await client.post(`/api/skills`, {title: skill.title, rate: skill.rate}, {headers: {'Authorization':`Bearer ${token}`}});
+        setSkills([...skills, resp.data.data[0]]);
+        console.log(resp);
+    }
     return (
         <div className='skills-exp'>
             <div className="text">
@@ -46,12 +52,8 @@ const SkillsAndExperience = () => {
 
             </div>
             <div className='skills'>
-                {skills.map(skill=><Skill skill={skill} key={skill.id} />)}
-                <div className='skill'>
-                    <button class="circle btn" style={{backgroundImage: `conic-gradient(#304d86 100%, #8ca0c9 0)`}}>
-                        <div class="inner "><i className="bi bi-plus-circle fs-1"></i></div>
-                    </button>
-                </div>
+                {skills.map(skill=><Skill skill={skill} deleteHandler={deleteSkill} key={skill.id} />)}
+                <AddSkill addHandler={addSkill}></AddSkill>
             </div>
 
 

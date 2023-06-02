@@ -10,6 +10,10 @@ import ProtectRoute from './ProtectRoute';
 import LoginPage from './Login/LoginPage';
 import AboutMe from './AboutMe/AboutMe';
 import SkillsAndExperience from './Skills/SkillsAndExperience';
+import ProjectList from './Projects/ProjectList';
+import BlogList from './Blog/BlogList';
+import { BlogContext } from '../contexts/BlogContext';
+import BlogPage from './Blog/BlogPage';
 
 const App = () => {
     const {token, login, logout} = useContext(AuthContextData);
@@ -27,8 +31,11 @@ const App = () => {
                     <Route path='/dashboard' element={<ProtectRoute><h1>Dashboard</h1></ProtectRoute>}></Route>
                     <Route path='/about' element={<ProtectRoute><AboutMe></AboutMe></ProtectRoute>}></Route>
                     <Route path='/skills' element={<ProtectRoute><SkillsAndExperience></SkillsAndExperience></ProtectRoute>}></Route>
-                    <Route path='/projects' element={<ProtectRoute><h1>Projects</h1></ProtectRoute>} />
-                    <Route path='/blogs' element={<ProtectRoute><h1>Blog</h1></ProtectRoute>} />
+                    <Route path='/projects' element={<ProtectRoute><ProjectList></ProjectList></ProtectRoute>} />
+                    <Route path='/blogs'>
+                        <Route index element={<ProtectRoute><BlogList></BlogList></ProtectRoute>}></Route>
+                        <Route path=':id' element={<ProtectRoute><BlogPage></BlogPage></ProtectRoute>}></Route>
+                    </Route>
                 </Routes>
             </div>
         </div>
@@ -41,7 +48,9 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <AuthContext>
-                <App />
+                <BlogContext>
+                    <App />
+                </BlogContext>
             </AuthContext>
         </BrowserRouter>
     </React.StrictMode>

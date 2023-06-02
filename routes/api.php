@@ -24,15 +24,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/signin', [AuthController::class, 'signin']);
 
-Route::get('/info/', [PersonalInfoController::class, 'index']);
-Route::get('/info/download/', [PersonalInfoController::class, 'download']);
+Route::get('/info', [PersonalInfoController::class, 'index']);
+Route::get('/info/download', [PersonalInfoController::class, 'download']);
 
-Route::get('/links/', [LinkController::class, 'index']);
-Route::get('/skills/', [SkillsController::class, 'index']);
-Route::get('/projects/', [ProjectController::class, 'index']);
-Route::get('/blogs/', [BlogController::class, 'index']);
-Route::get('/files/', [FileController::class, 'getFileByName']);
-Route::get('/experiences/', [ExperienceController::class, 'index']);
+Route::get('/links', [LinkController::class, 'index']);
+Route::get('/skills', [SkillsController::class, 'index']);
+Route::get('/projects', [ProjectController::class, 'index']);
+Route::get('/blogs', [BlogController::class, 'index']);
+Route::get('/files', [FileController::class, 'getFileByName']);
+Route::get('/experiences', [ExperienceController::class, 'index']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/signout', [AuthController::class, 'signout']);

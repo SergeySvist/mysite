@@ -125,6 +125,7 @@
 }
 
 .aboutMe{
+    width: 100vw;
     display: flex;
     align-items: center;
     position: relative;
@@ -276,7 +277,7 @@
 .search-container{
     display: flex;
 }
-.search-container input{
+.search-container .search{
     width: 100%;
     background-color: #15181d;
     border: none;
@@ -285,12 +286,18 @@
     color: #ffffff;
     padding-left: 10px;
 }
-.search-container button{
+.search-container .search-button{
     background-color: #15181d;
     border: none;
     border-radius: 0%;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+}
+.search-container .button{
+    background-color: #15181d;
+    border: none;
+    margin-left: 10px;
+    width: 10rem;
 }
 .list{
     margin-top: 3rem;
@@ -361,6 +368,15 @@
 
 .project-modal .modal-content hr{
     color: #15181d;
+}
+.project-modal .modal-body{
+    width: 100%;
+}
+.project-modal .modal-body textarea{
+    width: 100%;
+}
+.project-modal .modal-body input{
+    width: 100%;
 }
 .blogList {
     width: 100%;

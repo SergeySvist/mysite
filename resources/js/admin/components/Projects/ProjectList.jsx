@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { baseURL } from '../../config';
 import Project from './Project';
 import { useSearchParams } from 'react-router-dom';
+import AddProject from './AddProject';
 
 const client = axios.create({baseURL});
 
@@ -32,7 +33,9 @@ const ProjectList = () => {
             <div className="header">
                 <div className="search-container">
                     <input className='search' onChange={searchHandler} value={searchParams.get('title')}  type="text" placeholder='Search by project name or tag...'/>
-                    <button className='btn btn-dark'><i class="bi bi-search"></i></button>
+                    <button className='btn search-button btn-dark'><i class="bi bi-search"></i></button>
+                    <button className='btn button btn-dark' type="button" data-bs-toggle="modal" data-bs-target={`#addProjectModal`}>Add project</button>
+                    <AddProject></AddProject>
                 </div>
             </div>
             <div className='list'>

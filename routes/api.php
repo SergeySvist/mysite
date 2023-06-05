@@ -41,7 +41,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/', [PersonalInfoController::class, 'create']);
         Route::patch('/', [PersonalInfoController::class, 'patch']);
         Route::delete('/', [PersonalInfoController::class, 'delete']);
-
     });
 
     Route::group(['prefix' => 'links'], function (){
@@ -77,6 +76,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::patch('/', [ExperienceController::class, 'patch']);
         Route::delete('/', [ExperienceController::class, 'delete']);
     });
-
 });
 

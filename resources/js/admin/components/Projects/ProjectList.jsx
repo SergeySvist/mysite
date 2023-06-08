@@ -42,6 +42,11 @@ const ProjectList = () => {
         console.log(resp);
         setProjects([...projects, resp.data.data[0]]);
     }
+    const deleteProject = async (id)=>{
+        const resp = await client.delete(`/api/projects/${id}`, {headers: {'Authorization':`Bearer ${token}`}});
+        setProjects(projects.filter(project => project.id !== resp.data.data[0]));
+        console.log(resp);
+    }
 
     const searchHandler = ({target:{value}}) => {
         setSearchParams({title: value});
@@ -62,7 +67,7 @@ const ProjectList = () => {
                 </div>
             </div>
             <div className='list'>
-                {projects.filter(filterProjects).map(proj=><Project project={proj} key={proj.id}></Project>)}
+                {projects.filter(filterProjects).map(proj=><Project project={proj} actions={{deleteHandler: deleteProject}} key={proj.id}></Project>)}
             </div>
         </div>
     );

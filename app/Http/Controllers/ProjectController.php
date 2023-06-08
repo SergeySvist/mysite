@@ -78,7 +78,7 @@ class ProjectController extends Controller
         $project->update($request->validated());
         $this->updateProjectFile($project, 'avatar', $request, $fileService);
 
-        return $this->successResponse([$project->id], null, Response::HTTP_ACCEPTED);
+        return $this->successResponse([$project->toArray()], null, Response::HTTP_ACCEPTED);
     }
 
     public function delete(Project $project, FileService $fileService){

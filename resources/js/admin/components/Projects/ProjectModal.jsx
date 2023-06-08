@@ -37,7 +37,7 @@ const ProjectModal = ({project, actions}) => {
                     {project ? 
                         (<>
                             <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={()=>{actions.deleteHandler(project.id)}}>Delete</button>
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Edit</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={()=>{actions.updateHandler({id: project.id, title, link, description: desc, avatar: img})}}>Edit</button>
                         </>) : 
                         (   
                             <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={()=>{actions.createHandler({title, link, description: desc, avatar: img})}}>Add</button>

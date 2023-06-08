@@ -47,6 +47,26 @@ const ProjectList = () => {
         setProjects(projects.filter(project => project.id !== resp.data.data[0]));
         console.log(resp);
     }
+    const updateProject = async (project) => {
+        const formData = new FormData();
+        formData.append('title', project.title);
+        formData.append('link', project.link);
+        formData.append('description', project.description);
+        project.avatar && formData.append('avatar', project.avatar);
+        
+        const resp = await client.post(`/api/projects/${project.id}`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "x-rapidapi-host": "file-upload8.p.rapidapi.com",
+            "x-rapidapi-key": "your-rapidapi-key-here",
+            'Authorization':`Bearer ${token}`,
+          },
+          params: {lang: "en", _method: "PATCH"},
+        });
+
+        console.log(resp);
+        setProjects(projects.map(f => f.id === resp.data.data[0].id ? {...resp.data.data[0]} : f));
+    }
 
     const searchHandler = ({target:{value}}) => {
         setSearchParams({title: value});
@@ -67,7 +87,7 @@ const ProjectList = () => {
                 </div>
             </div>
             <div className='list'>
-                {projects.filter(filterProjects).map(proj=><Project project={proj} actions={{deleteHandler: deleteProject}} key={proj.id}></Project>)}
+                {projects.filter(filterProjects).map(proj=><Project project={proj} actions={{deleteHandler: deleteProject, updateHandler: updateProject}} key={proj.id}></Project>)}
             </div>
         </div>
     );

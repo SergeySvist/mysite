@@ -28,7 +28,7 @@ const ProjectModal = ({project, actions}) => {
                     <label htmlFor="">Link:</label><br/>
                     <input type="text" placeholder='Input here...' value={link} onChange={(e)=>{setLink(e.target.value)}}/><br/>
                     <label htmlFor="">Image:</label><br/>
-                    <input type="file" name="" id="" className='form-control'/>
+                    <input type="file" name="" id="" className='form-control' onChange={(e)=>{setImg(e.target.files[0])}}/>
                     <label htmlFor="">Description:</label> <br/>
                     <textarea name="" id="" rows="10" placeholder='Input here...' value={desc} onChange={(e)=>{setDesc(e.target.value)}}></textarea>
                 </div>
@@ -40,7 +40,7 @@ const ProjectModal = ({project, actions}) => {
                             <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Edit</button>
                         </>) : 
                         (   
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={()=>{actions.createHandler({title, link, description: desc, avatar: img})}}>Add</button>
                         )
                     }
                 </div>

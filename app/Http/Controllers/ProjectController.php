@@ -65,7 +65,7 @@ class ProjectController extends Controller
         $project->save();
         $this->createNewProjectFile($project->id, $avatar->id, 'avatar');
 
-        return $this->successResponse($project->toArray(), null, Response::HTTP_CREATED);
+        return $this->successResponse([$project->toArray()], null, Response::HTTP_CREATED);
     }
 
     public function addTag(Project $project, AddTagRequest $request){

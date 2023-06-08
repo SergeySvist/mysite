@@ -13,7 +13,8 @@ import SkillsAndExperience from './Skills/SkillsAndExperience';
 import ProjectList from './Projects/ProjectList';
 import BlogList from './Blog/BlogList';
 import { BlogContext } from '../contexts/BlogContext';
-import BlogPage from './Blog/BlogPage';
+import BlogEdit from './Blog/BlogEdit';
+import BlogCreate from './Blog/BlogCreate';
 
 const App = () => {
     const {token, login, logout} = useContext(AuthContextData);
@@ -34,7 +35,8 @@ const App = () => {
                     <Route path='/projects' element={<ProtectRoute><ProjectList></ProjectList></ProtectRoute>} />
                     <Route path='/blogs'>
                         <Route index element={<ProtectRoute><BlogList></BlogList></ProtectRoute>}></Route>
-                        <Route path=':id' element={<ProtectRoute><BlogPage></BlogPage></ProtectRoute>}></Route>
+                        <Route path=':id' element={<ProtectRoute><BlogEdit></BlogEdit></ProtectRoute>}></Route>
+                        <Route path='create' element={<ProtectRoute><BlogCreate></BlogCreate></ProtectRoute>}></Route>
                     </Route>
                 </Routes>
             </div>

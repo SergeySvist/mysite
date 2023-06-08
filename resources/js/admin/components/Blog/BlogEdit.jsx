@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import emojione from 'emojione';
 
-const BlogPage = () => {
+const BlogEdit = () => {
     const {id} = useParams();
     const {blogs, loading} = useContext(BlogContextData);
 
@@ -20,4 +20,4 @@ const BlogPage = () => {
     );
 }
 
-export default BlogPage;
+export default BlogEdit;

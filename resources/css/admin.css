@@ -392,8 +392,23 @@
     width: 100%;
     position: relative;
     padding: 3rem 17rem 3rem 3rem;
+    
 }
-
+.blogPage .edit{
+    width: 100%;
+}
+.blogPage textarea{
+    width: 100%;
+}
+.blogPage .buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.blogPage .buttons button{
+    margin-left: 2rem;
+    width: 6rem;
+}
 .blogPage img{
     object-fit: cover;
 }

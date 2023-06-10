@@ -35,6 +35,9 @@ Route::domain(env('APP_URL'))->group(function (){
     Route::get('/projects', function () {
         return view('welcome');
     });
+    Route::fallback(function () {
+        return view('welcome');
+    });
 });
 
 // ADMIN ROUTES
@@ -56,6 +59,15 @@ Route::domain('admin.'.env('APP_URL'))->group(function (){
         return view('admin');
     });
     Route::get('/blogs', function () {
+        return view('admin');
+    });
+    Route::get('/blogs/{blog}', function () {
+        return view('admin');
+    });
+    Route::get('/blogs/create', function () {
+        return view('admin');
+    });
+    Route::fallback(function () {
         return view('admin');
     });
 });

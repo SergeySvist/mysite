@@ -65,7 +65,7 @@ class BlogController extends Controller
         $blog->save();
         $this->createNewBlogFile($blog->id, $avatar->id, 'avatar');
 
-        return $this->successResponse($blog->toArray(), null, Response::HTTP_CREATED);
+        return $this->successResponse([$blog->toArray()], null, Response::HTTP_CREATED);
     }
 
     public function addTag(Blog $blog, AddTagRequest $request){

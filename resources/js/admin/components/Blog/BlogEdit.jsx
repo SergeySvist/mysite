@@ -7,7 +7,7 @@ import emojione from 'emojione';
 
 const BlogEdit = () => {
     const {id} = useParams();
-    const {blogs, loading} = useContext(BlogContextData);
+    const {blogs, handlers, loading} = useContext(BlogContextData);
     const blog = blogs.find(blog => blog.id === +id);
 
     const [text, setText] = useState(loading ? "" : blog.main_text);
@@ -27,8 +27,8 @@ const BlogEdit = () => {
                 <label htmlFor="">Text:</label> <br/>
                 <textarea name="" id="" rows="20" placeholder='Input here...' value={text} onChange={(e)=>{setText(e.target.value)}}></textarea>
                 <div className="buttons">
-                    <button type="button" className="btn btn-danger">Delete</button>
-                    <button type="button" className="btn btn-primary">Congirm</button>
+                    <button type="button" className="btn btn-danger" onClick={()=>{handlers.deleteBlog(blog.id)}}>Delete</button>
+                    <button type="button" className="btn btn-primary" onClick={()=>{handlers.updateBlog({id: blog.id ,title, main_text: text, avatar: img})}}>Confirm</button>
                 </div>
             </div>
             <div className="text">

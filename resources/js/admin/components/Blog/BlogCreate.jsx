@@ -6,6 +6,7 @@ import rehypeRaw from 'rehype-raw';
 import emojione from 'emojione';
 
 const BlogCreate = () => {
+    const {blogs, handlers, loading} = useContext(BlogContextData);
 
     const [text, setText] = useState("");
     const [title, setTitle] = useState("");
@@ -19,12 +20,12 @@ const BlogCreate = () => {
                 <input type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}}/><br/><br/>
 
                 <label htmlFor="">Image:</label> <br/>
-                <input type="file" className='form-control' value={img} onChange={(e)=>{setImg(e.target.files[0])}}/><br/>
+                <input type="file" className='form-control' onChange={(e)=>{setImg(e.target.files[0])}}/><br/>
 
                 <label htmlFor="">Text:</label> <br/>
                 <textarea name="" id="" rows="20" placeholder='Input here...' value={text} onChange={(e)=>{setText(e.target.value)}}></textarea>
                 <div className="buttons">
-                    <button type="button" className="btn btn-primary">Create</button>
+                    <button type="button" className="btn btn-primary" onClick={()=>{handlers.createBlog({title, main_text: text, avatar: img})}}>Create</button>
                 </div>
             </div>
             <div className="text">

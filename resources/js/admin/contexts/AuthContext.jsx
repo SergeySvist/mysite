@@ -15,7 +15,7 @@ const AuthContext = ({children})=>{
     const handleLogin = async (email, pass) => {
         const resp = await client.post('/api/signin', {email: email, password: pass});
 
-        setToken(resp.data.data.access_token);
+        setToken(resp.data.data[0].access_token);
         nav('/dashboard');
     };
 

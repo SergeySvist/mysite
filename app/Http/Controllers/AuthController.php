@@ -19,7 +19,7 @@ class AuthController extends Controller
             throw new ApiUnauthorizedException();
 
         return $this->successResponse(
-            ['access_token'=>Auth::user()->createToken('access_token')->plainTextToken],
+            [['access_token'=>Auth::user()->createToken('access_token')->plainTextToken]],
         );
 
     }

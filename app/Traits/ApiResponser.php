@@ -15,7 +15,10 @@ trait ApiResponser
      */
     protected function successResponse(array $data = [], string $message = null, int $statusCode = 200): JsonResponse
     {
-        return response()->json([
+        if ($data[0] == null)
+        	return $this->errorResponse("Data not found", 404);
+
+	return response()->json([
             'success' => true,
             'message' => $message,
             'data' => $data,

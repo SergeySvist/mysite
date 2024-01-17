@@ -21,7 +21,7 @@ const ProjectInfo = ({project}) => {
                 <div class="modal-body">
                     <img src={project.project_files_data[0].file_url} alt="" width="100%"/>
                     <p>{project.description}</p>
-                    <a>{project.link}</a>
+                    <a href={project.link}></a>
                 </div>
                 </div>
             </div>

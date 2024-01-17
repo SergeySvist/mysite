@@ -209,8 +209,8 @@
     transition: opacity 0.4s, z-index 0s 0.7s;
 }
 
-.code-link-button{
-    background-color: #1a202c;
+.code-link-button:hover{
+    color: #bfbebe;
 }
 
 .project-modal .modal-content{

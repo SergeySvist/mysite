@@ -22,7 +22,7 @@ const ProjectInfo = ({project}) => {
                     <img src={project.project_files_data[0].file_url} alt="" width="100%"/>
                     <p>{project.description}</p>
                     <br />
-                    <a href={project.link} className='btn btn-primary'><i className="fa fa-github"/>Github</a>
+                    <a href={project.link} className='btn btn-primary'><i className="fs-4 bi bi-github"/> Github</a>
                 </div>
                 </div>
             </div>

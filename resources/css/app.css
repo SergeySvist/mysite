@@ -209,9 +209,7 @@
     transition: opacity 0.4s, z-index 0s 0.7s;
 }
 
-.code-link-button:hover{
-    color: #1a202c;
-}
+
 
 .project-modal .modal-content{
     background-color: #15181d;
@@ -224,6 +222,7 @@
 .modal-body{
     text-align: left;
 }
+
 
 .blogList {
     width: 100%;

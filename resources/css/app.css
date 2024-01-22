@@ -220,15 +220,12 @@
 }
 
 .modal-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     text-align: left;
 }
 
 .modal-body .btn{
-    width: 100px;
+    display: inline-block;
+    margin: auto;
 }
 
 .blogList {

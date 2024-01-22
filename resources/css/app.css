@@ -221,11 +221,13 @@
 
 .modal-body{
     text-align: left;
+    position: relative;
 }
 
 .modal-body .btn{
-    display: inline-block;
-    margin: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(50%);
 }
 
 .blogList {

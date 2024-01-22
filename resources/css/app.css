@@ -221,8 +221,15 @@
 
 .modal-body{
     text-align: left;
+    position: relative;
 }
 
+.modal-body .btn{
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
 
 .blogList {
     width: 100%;

@@ -220,13 +220,14 @@
 }
 
 .modal-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     text-align: left;
 }
 
 .modal-body .btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100px;
 }
 
